@@ -82,7 +82,18 @@ local plugins={
   },
   {
     "deoplete-plugins/deoplete-clang"
-  }
+  },
+  -- Better Python syntax highlighting
+  {
+    "numirias/semshi",
+    ft = "python", -- Load only for Python files
+    build = ":UpdateRemotePlugins", -- Required for remote plugins
+  },
+  -- PEP8-compliant indentation
+  {
+    "Vimjas/vim-python-pep8-indent",
+    ft = "python",
+  },
 };
 
 
