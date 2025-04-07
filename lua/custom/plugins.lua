@@ -86,6 +86,7 @@ local plugins={
   -- Better Python syntax highlighting
   {
     "numirias/semshi",
+    build = ":UpdateRemotePlugins",
     ft = { "python" },
   },
   -- PEP8-compliant indentation
