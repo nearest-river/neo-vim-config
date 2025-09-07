@@ -5,7 +5,8 @@ local plugins={
     ops={
       ensure_installed={
         "rust-analyzer",
-        "clangd"
+        "clangd",
+        "pyright"
       }
     }
   },
@@ -82,17 +83,6 @@ local plugins={
   },
   {
     "deoplete-plugins/deoplete-clang"
-  },
-  -- Better Python syntax highlighting
-  {
-    "numirias/semshi",
-    build = ":UpdateRemotePlugins",
-    ft = { "python" },
-  },
-  -- PEP8-compliant indentation
-  {
-    "Vimjas/vim-python-pep8-indent",
-    ft = { "python" },
   },
 };
 
