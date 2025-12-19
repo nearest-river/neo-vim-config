@@ -9,6 +9,7 @@ local plugins={
         "pyright",
         "mypy",
         "ruff",
+        "gopls",
       }
     }
   },
@@ -92,7 +93,7 @@ local plugins={
   },
   {
     "deoplete-plugins/deoplete-clang"
-  },
+  }
 };
 
 
