@@ -114,7 +114,6 @@ require('lualine').setup {
 
 
 --- theme
-vim.cmd("colorscheme default");
 vim.cmd("colorscheme vscode");
 
 --- tabs
