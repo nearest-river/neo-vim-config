@@ -15,7 +15,7 @@ end
 
 -- disable semantic tokens
 M.on_init = function(client, _)
-  if not utils.load_config().ui.lsp_semantic_tokens and client.supports_method "textDocument/semanticTokens" then
+  if not utils.load_config().ui.lsp_semantic_tokens and client:supports_method "textDocument/semanticTokens" then
     client.server_capabilities.semanticTokensProvider = nil
   end
 end
@@ -40,6 +40,7 @@ M.capabilities.textDocument.completion.completionItem = {
   },
 }
 
+-- require("lspconfig").lua_ls.setup {
 require("lspconfig").lua_ls.setup {
   on_init = M.on_init,
   on_attach = M.on_attach,
