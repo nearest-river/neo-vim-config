@@ -112,12 +112,7 @@ require('lualine').setup {
   extensions={}
 }
 
-
---- theme
-vim.cmd("colorscheme vscode");
-
 --- tabs
-
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "rust",
   callback = function()
@@ -126,4 +121,7 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo.expandtab = true
   end,
 })
+
+--- theme
+vim.cmd("colorscheme vscode");
 

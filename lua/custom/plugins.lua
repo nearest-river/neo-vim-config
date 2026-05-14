@@ -69,6 +69,24 @@ local plugins={
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    opts = {
+      ensure_installed = {
+        "rust",
+        "go",
+        "gomod",
+        "gowork",
+        "gosum",
+      },
+
+      highlight = {
+        enable = true,
+      },
+
+      indent = {
+        enable = true,
+      },
+    },
   },
   {
     "romgrk/barbar.nvim",

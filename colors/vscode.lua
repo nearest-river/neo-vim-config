@@ -1,10 +1,7 @@
 local hl=vim.api.nvim_set_hl;
 
-function blend(key)
-  local color=vim.api.nvim_get_hl_by_id(vim.api.nvim_get_hl_id_by_name(key),key).foreground;
-  return color;
-end
 
+hl(0, "LspInlayHint", { fg="#808080" });
 
 hl(0, "Normal", { fg="#D4D4D4", bg="#1E1E1E" });
 hl(0, "ColorColumn", { fg="NONE", bg="#222222" });
@@ -145,7 +142,8 @@ hl(0, "@tag", { fg="#569CD6", bg="NONE" });
 hl(0, "@tag.delimiter", { fg="#808080", bg="NONE" });
 hl(0, "@tag.attribute", { fg="#9CDCFE", bg="NONE" });
 
-hl(0, "@text", { fg="#D4D4D4", bg="NONE" }); hl(0, "@markup.strong", { fg="#569CD6", bold=true });
+hl(0, "@text", { fg="#D4D4D4", bg="NONE" });
+hl(0, "@markup.strong", { fg="#569CD6", bold=true });
 hl(0, "@markup.italic", { fg="#D4D4D4", bg="NONE", italic=true });
 hl(0, "@markup.underline", { fg="#D7BA7D", bg="NONE", underline=true });
 hl(0, "@markup.strikethrough", { fg="#D4D4D4", bg="NONE", strikethrough=true });
@@ -353,11 +351,32 @@ hl(0, "@lsp.typemod.type.defaultLibrary.typescript", { fg="#4EC9B0", bg="NONE" }
 
 -- c
 hl(0, "@keyword.directive.c", { fg="#C586C0", bg="NONE" });
+hl(0, "cDefine", { link="@keyword.directive.c" });
+hl(0, "cStructure", { link="@keyword" });
+hl(0, "cTypedef", { link="@keyword" });
+
+
 
 -- rust
+
+vim.cmd([[
+  syntax keyword @rust.keyword.raw raw
+  syntax keyword @rust.keyword.as as
+]]);
+
+hl(0,"rustSigil", { link = "Operator" });
+hl(0,"@rust.keyword.as", { link = "@keyword" });
+hl(0,"@rust.keyword.raw", { link = "@keyword" });
+hl(0,"rustFoldBraces", { fg="#D4D4D4", bg="NONE" }); -- TODO(nate)
+hl(0,"rustDerive", { link="rustFoldBraces" });
+hl(0,"rustAttribute", { link="@function.macro.rust" });
+hl(0,"rustAttributeParenthesizedParens", { link="rustFoldBraces" });
+
 hl(0,"@include.rust", { fg="#569CD6", bg="NONE" });
 hl(0,"@keyword.import.rust", { fg="#569CD6", bg="NONE" });
 hl(0,"@function.macro.rust", { fg="#DCDCAA", bg="NONE" });
+hl(0,"@lsp.mod.attribute.rust", { link="@function.macro.rust" });
+hl(0,"@lsp.type.builtinType.rust", { link = "@type.builtin.rust" });
 hl(0,"@type.builtin.rust", { fg="#4EC9B0", bg="NONE" });
 hl(0,"@lsp.type.selfKeyword.rust", { fg="#569CD6", bg="NONE" });
 hl(0,"@lsp.type.macro.rust", { fg="#569CD6", bg="NONE" });
@@ -367,7 +386,13 @@ hl(0,"@lsp.typemod.variable.mutable.rust", { underline=true, link="@lsp.type.var
 hl(0,"@lsp.typemod.method.attribute.rust", { fg="#DCDCAA", bg="NONE" });
 hl(0,"@lsp.typemod.generic.attribute.rust", { fg="#D4D4D4", bg="NONE" });
 hl(0,"@lsp.typemod.deriveHelper.attribute.rust", { fg="#D4D4D4", bg="NONE" });
-
+hl(0,"@lsp.type.attributeBracket.rust", { link="rustFoldBraces", fg="#D4D4D4", bg="NONE" });
+hl(0,"@lsp.typemod.attributeBracket.attribute.rust", { link="rustFoldBraces" });
+hl(0,"@lsp.type.const.rust", { link="@constant" });
+hl(0,"@lsp.typemod.string.attribute.rust", { link="@string" });
+hl(0,"@lsp.typemod.operator.attribute.rust", { link="@operator" });
+hl(0,"@lsp.type.selfTypeKeyword.rust", { link="@type" });
+hl(0,"@lsp.typemod.typeAlias.library.rust", { link="@type" });
 
 hl(0, "xmlTag", { fg="#569CD6", bg="NONE" });
 hl(0, "xmlTagName", { fg="#569CD6", bg="NONE" });
@@ -444,6 +469,9 @@ hl(0, "luaFuncArgName", { fg="#9CDCFE", bg="NONE" });
 hl(0, "luaFuncKeyword", { fg="#C586C0", bg="NONE" });
 hl(0, "luaLocal", { fg="#C586C0", bg="NONE" });
 hl(0, "luaBuiltIn", { fg="#569CD6", bg="NONE" });
+hl(0, "@module.builtin.lua", { link="@module" });
+
+
 
 hl(0, "shDeref", { fg="#9CDCFE", bg="NONE" });
 hl(0, "shVariable", { fg="#9CDCFE", bg="NONE" });
